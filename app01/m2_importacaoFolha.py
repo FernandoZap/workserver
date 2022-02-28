@@ -129,7 +129,6 @@ def importacaoFolha(file_zip,id_municipio,anomes):
                                     }
                                 )
 
-                    '''
                     for k in lista_final:   
                         funcoes_banco.gravar_folhaMensal(
                             id_municipio,
@@ -143,7 +142,6 @@ def importacaoFolha(file_zip,id_municipio,anomes):
                             k['cod_vinculo'],
                             lista_provdesc
                             )
-                    '''
                     lista_provdesc=[]
                     lista_final=[]
             break
