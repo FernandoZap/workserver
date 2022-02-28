@@ -244,12 +244,13 @@ def importacaoGeral(request):
         municipio = Municipio.objects.get(id_municipio=id_municipio)
         modelo = municipio.modelo
         string_pesquisa = municipio.string_pesquisa
+        nome_municipio=municipio.municipio
 
 
         mes_extenso = funcoes_gerais.mesPorExtenso(mes,modelo)
-        if id_municipio==76:
+        if modelo==1:
             referencia='FOLHA REF:'+mes_extenso+'/'+ano
-        elif id_municipio==1:
+        elif modelo==2:
             referencia=mes_extenso+' de '+ano
 
 
