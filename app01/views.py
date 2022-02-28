@@ -349,7 +349,7 @@ def importacaoFolha(request):
             mensagem='Processo Concluido'
         else:
             mensagem='Arquivo Zip não foi localizado!'
-            municipios=Municipio.objects.all().order_by(municipio)
+            municipios=Municipio.objects.all().order_by('municipio')
             return render(request, 'app01/importacaoFolha.html',
                     {
                         'titulo': titulo_html,
@@ -357,7 +357,7 @@ def importacaoFolha(request):
                         'municipios':municipios
                     }
                   )
-    municipios=Municipio.objects.all().order_by(municipio)
+    municipios=Municipio.objects.all().order_by('municipio')
     return render(request, 'app01/importacaoFolha.html',
             {
                 'titulo': titulo_html,
