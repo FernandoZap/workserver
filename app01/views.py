@@ -403,8 +403,8 @@ def listFolha(request):
                 if pp2.provdesc.codigo==pp1.codigo:
                     valor=pp2.valor
             lista.append(valor)
-        print(lista)
-        print ('-----------------------------')
+        #print(lista)
+        #print ('-----------------------------')
 
 
 
@@ -471,12 +471,12 @@ def gravarCSVFolha(request):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="folha_20210215.csv"'
         if (1==1):
-            folha = FolhaMes.objects.filter(anomes=anomes,funcionario__id_municipio=id_municipio).order_by('funcionario__nome')
+            folha = FolhaMes.objects.filter(anomes=anomes,funcionario__id_municipio=id_municipio).select_related('setor').order_by('funcionario__nome')
             rel_prov = ProvDesc.objects.filter(id_municipio=id_municipio, tipo='VANTAGEM').order_by('ordenacao1')
 
             cabecalho = funcoes_gerais.cabecalhoFolha(id_municipio)
-            print ('id_municipio: '+str(id_municipio))
-            print(cabecalho)
+            #print ('id_municipio: '+str(id_municipio))
+            #print(cabecalho)
 
             writer = csv.writer(response, delimiter=';')
             response.write(u'\ufeff'.encode('utf8'))
@@ -487,7 +487,7 @@ def gravarCSVFolha(request):
 
             for f1 in folha:
                 lista=[]
-                lista.append(f1.departamento.departamento)
+                lista.append(f1.setor.departamento)
                 lista.append(f1.lotacao.lotacao)
                 lista.append(f1.funcionario.codigo)
                 lista.append(f1.funcionario.nome)
