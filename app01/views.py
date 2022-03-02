@@ -341,11 +341,9 @@ def importacaoFolha(request):
                 leituraZip.importacaoProventos_modelo1(file_zip,id_municipio,anomes)
                 leituraZip.importacaoFuncionario_modelo1(file_zip,id_municipio,anomes)
             if modelo==2:
-                #FolhaMes.objects.filter(anomes=anomes,id_municipio=id_municipio).delete()
-                #ProventosMes.objects.filter(anomes=anomes,id_municipio=id_municipio).delete()
+                FolhaMes.objects.filter(anomes=anomes,id_municipio=id_municipio).delete()
+                ProventosMes.objects.filter(anomes=anomes,id_municipio=id_municipio).delete()
                 retorno=m2_importacaoFolha.importacaoFolha(file_zip,id_municipio,anomes)
-                #leituraZip.importacaoProventos_modelo2(file_zip,id_municipio,anomes)
-                #leituraZip.importacaoFuncionario_modelo2(file_zip,id_municipio,anomes)
             mensagem='Processo Concluido'
         else:
             mensagem='Arquivo Zip não foi localizado!'
