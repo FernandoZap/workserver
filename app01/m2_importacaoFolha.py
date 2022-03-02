@@ -1,15 +1,8 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
-import datetime
 import zipfile
 import re
-import csv
 from . import funcoes_banco
-from django.http import HttpResponse
 import PyPDF2 as p2
-import json
-
 
 
 def importacaoFolha(file_zip,id_municipio,anomes):

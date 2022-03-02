@@ -5,11 +5,8 @@ import datetime
 import zipfile
 import re
 from .models import Departamento,Setor,Vinculo,ProvDesc
-import csv
 from . import funcoes_banco
-from django.http import HttpResponse
 import PyPDF2 as p2
-import json
 
 
 
