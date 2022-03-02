@@ -294,7 +294,7 @@ def importacaoFolha(request):
     titulo_html = 'Importar Folha - Atenção: informe apenas arquivo .zip'
     
     mensagem=''
-
+    municipios=Municipio.objects.all().order_by('municipio')
     if (request.method == "POST" and request.FILES['filename']):
 
         current_user = request.user.iduser
@@ -343,11 +343,11 @@ def importacaoFolha(request):
             if modelo==2:
                 FolhaMes.objects.filter(anomes=anomes,id_municipio=id_municipio).delete()
                 ProventosMes.objects.filter(anomes=anomes,id_municipio=id_municipio).delete()
-                retorno=m2_importacaoFolha.importacaoFolha(file_zip,id_municipio,anomes)
+                m2_importacaoFolha.importacaoFolha(file_zip,id_municipio,anomes)
             mensagem='Processo Concluido'
         else:
             mensagem='Arquivo Zip não foi localizado!'
-            municipios=Municipio.objects.all().order_by('municipio')
+            
             return render(request, 'app01/importacaoFolha.html',
                     {
                         'titulo': titulo_html,
@@ -355,7 +355,6 @@ def importacaoFolha(request):
                         'municipios':municipios
                     }
                   )
-    municipios=Municipio.objects.all().order_by('municipio')
     return render(request, 'app01/importacaoFolha.html',
             {
                 'titulo': titulo_html,
