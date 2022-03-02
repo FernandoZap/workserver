@@ -141,13 +141,13 @@ def gravar_folhaMensal(id_municipio,anomes,cod_depto,cod_setor,cod_funcionario,c
 
 		provdesc=ProvDesc.objects.filter(id_municipio=id_municipio,codigo=codigo_provdesc).first()
 
-		ProventosMes.objects.create(
+		prov = ProventosMes(
 			anomes=anomes,
 			id_municipio=id_municipio,
 			folhames=flmes,
 			provdesc=provdesc,
-			valor=valor_v
-		)
+			valor=valor_v)
+		prov.save()
 
 
 
