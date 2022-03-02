@@ -53,6 +53,7 @@ def gravar_funcionario(lista_set,id_municipio):
 	return None				
 
 
+
 def gravar_proventos(lista,id_municipio):
 
 	for id in range(len(lista)):
@@ -112,6 +113,7 @@ def gravar_folhaMensal(id_municipio,anomes,cod_depto,cod_setor,cod_funcionario,c
 	lotacao=searchLotacao(id_municipio,cod_lotacao)
 	vinculo=searchVinculo(id_municipio,cod_vinculo)
 
+	'''
 	FolhaMes.objects.create(
 		anomes=anomes,
 		funcionario=funcionario,
@@ -121,7 +123,12 @@ def gravar_folhaMensal(id_municipio,anomes,cod_depto,cod_setor,cod_funcionario,c
 		lotacao=lotacao,
 		vinculo=vinculo
 		)
-	obj = FolhaMes.objects.filter(anomes=anomes,funcionario=funcionario).first()
+	'''
+
+	flmes = FolhaMes(anomes=anomes,funcionario=funcionario,id_municipio=id_municipio,setor=setor,funcao=funcao,lotacao=lotacao,vinculo=vinculo)
+	flmes.save()
+
+	#obj = FolhaMes.objects.filter(anomes=anomes,funcionario=funcionario).first()
 
 
 
@@ -137,7 +144,7 @@ def gravar_folhaMensal(id_municipio,anomes,cod_depto,cod_setor,cod_funcionario,c
 		ProventosMes.objects.create(
 			anomes=anomes,
 			id_municipio=id_municipio,
-			folhames=obj,
+			folhames=flmes,
 			provdesc=provdesc,
 			valor=valor_v
 		)
