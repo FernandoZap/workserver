@@ -36,7 +36,7 @@ def importacaoFolha(file_zip,id_municipio,anomes):
             lista_2=[]
 
             lista_final=[]
-            for i in range(116,n):
+            for i in range(0,n):
                 # creating a page object
                 pageObj = pdf_reader.getPage(i)
                 # extracting text from page
@@ -140,7 +140,7 @@ def importacaoFolha(file_zip,id_municipio,anomes):
             break
         #print (lista_provdesc)
         #print ('----------------------')
-    zip.close()
+        zip.close()
     return 1
 
 def fcod_departamentoSetor(l_departamento,id_municipio,tipo):
